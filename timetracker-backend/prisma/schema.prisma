@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model Users {
+  id           Int             @id @default(autoincrement())
+  email        String          @unique
+  password     String
+  role         Role[]          @default([USER])
+  projects     Projects[]
+  time_entries TimeEntries[]
+  settings     UsersSettings[]
+}
+
+model UsersSettings {
+  id        Int   @id @default(autoincrement())
+  user      Users @relation(fields: [usersId], references: [id])
+  usersId   Int
+  // > 0
+  hour_rate Int
+}
+
+model Projects {
+  id          Int           @id @default(autoincrement())
+  name        String
+  user        Users         @relation(fields: [usersId], references: [id])
+  usersId     Int
+  TimeEntries TimeEntries[]
+}
+
+model TimeEntries {
+  id         Int      @id @default(autoincrement())
+  user       Users    @relation(fields: [usersId], references: [id])
+  usersId    Int
+  title      String
+  project    Projects @relation(fields: [projectsId], references: [id])
+  projectsId Int
+  created_at DateTime @default(now())
+}
