@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Redirect } from '@nestjs/common';
 import { EmailConfirmationService } from './email-confirmation.service';
 
 @Controller('email')
@@ -8,7 +8,8 @@ export class EmailConfirmationController {
   ) {}
 
   @Get('/confirm/:token')
-  async confirmEmail(@Param('token') token: string) {
+  @Redirect('http://localhost:3000/login')
+  async redirectToLogin(@Param('token') token: string) {
     return await this.emailConfirmationService.confirmEmail(token);
   }
 }
