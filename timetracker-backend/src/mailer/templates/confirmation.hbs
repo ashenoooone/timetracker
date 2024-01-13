@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .confirmation-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #333;
+      font-size: 24px;
+    }
+
+    p {
+      color: #555;
+      font-size: 18px;
+    }
+
+    a {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 6px;
+      display: inline-block;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .smiley {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="confirmation-container">
+  <div class="smiley">😊</div>
+  <p>Привет, {{ name }},</p>
+  <p>Пожалуйста, нажмите ниже, чтобы подтвердить свою электронную почту</p>
+  <p>
+    <a href="{{ url }}">Подтвердить</a>
+  </p>
+  <p>Если вы не запрашивали это письмо, можете смело его игнорировать.</p>
+</div>
+</body>
+</html>

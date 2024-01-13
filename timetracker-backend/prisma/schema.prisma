@@ -7,43 +7,53 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  USER
-  ADMIN
-}
-
 model Users {
   id           Int             @id @default(autoincrement())
   email        String          @unique
   password     String
   role         Role[]          @default([USER])
+  verified     Boolean         @default(false) @map("_v")
   projects     Projects[]
   time_entries TimeEntries[]
   settings     UsersSettings[]
 }
 
+model EmailVerifications {
+  id         Int      @id @default(autoincrement())
+  email      String
+  code       String
+  created_at DateTime @default(now())
+  verified   Boolean  @default(false) @map("_v")
+}
+
 model UsersSettings {
   id        Int   @id @default(autoincrement())
-  user      Users @relation(fields: [usersId], references: [id])
   usersId   Int
-  // > 0
   hour_rate Int
+  user      Users @relation(fields: [usersId], references: [id])
 }
 
 model Projects {
   id          Int           @id @default(autoincrement())
   name        String
-  user        Users         @relation(fields: [usersId], references: [id])
   usersId     Int
+  user        Users         @relation(fields: [usersId], references: [id])
   TimeEntries TimeEntries[]
 }
 
 model TimeEntries {
   id         Int      @id @default(autoincrement())
-  user       Users    @relation(fields: [usersId], references: [id])
   usersId    Int
   title      String
-  project    Projects @relation(fields: [projectsId], references: [id])
   projectsId Int
   created_at DateTime @default(now())
+  from       DateTime
+  to         DateTime
+  project    Projects @relation(fields: [projectsId], references: [id])
+  user       Users    @relation(fields: [usersId], references: [id])
+}
+
+enum Role {
+  USER
+  ADMIN
 }
