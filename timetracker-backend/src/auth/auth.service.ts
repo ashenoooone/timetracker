@@ -7,6 +7,7 @@ import { TokenDtoDto } from './dto/tokenDto.dto';
 import { DatabaseService } from '../database/database.service';
 import { Users } from '@prisma/client';
 import { ConfigService } from '@nestjs/config';
+import { UserSettingsService } from '../user-settings/user-settings.service';
 
 @Injectable()
 export class AuthService {
@@ -14,6 +15,7 @@ export class AuthService {
     public readonly dbClient: DatabaseService,
     private readonly emailConfirmationService: EmailConfirmationService,
     private readonly jwtService: JwtService,
+    private readonly userSettingsService: UserSettingsService,
     private readonly configService: ConfigService,
   ) {}
 
@@ -111,6 +113,11 @@ export class AuthService {
         email: dto.email,
         password: await hash(dto.password, await genSalt(10)),
       },
+    });
+
+    await this.userSettingsService.createUserSettings({
+      hour_rate: 1,
+      userId: createdUser.id,
     });
 
     return this.mapUser(createdUser);

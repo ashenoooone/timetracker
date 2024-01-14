@@ -4,6 +4,7 @@ import { AuthModule } from './auth/auth.module';
 import { MailerModule } from './mailer/mailer.module';
 import { ConfigModule } from '@nestjs/config';
 import { EmailConfirmationModule } from './email-confirmation/email-confirmation.module';
+import { UserSettingsModule } from './user-settings/user-settings.module';
 import * as Joi from 'joi';
 
 @Module({
@@ -26,6 +27,7 @@ import * as Joi from 'joi';
       }),
     }),
     EmailConfirmationModule,
+    UserSettingsModule,
   ],
   controllers: [],
   providers: [],
