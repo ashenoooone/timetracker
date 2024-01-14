@@ -7,6 +7,7 @@ import { EmailConfirmationModule } from './email-confirmation/email-confirmation
 import { UserSettingsModule } from './user-settings/user-settings.module';
 import { ProjectsModule } from './projects/projects.module';
 import { UsersModule } from './users/users.module';
+import { TimeEntriesModule } from './time-entries/time-entries.module';
 import * as Joi from 'joi';
 
 @Module({
@@ -32,6 +33,7 @@ import * as Joi from 'joi';
     UserSettingsModule,
     ProjectsModule,
     UsersModule,
+    TimeEntriesModule,
   ],
   controllers: [],
   providers: [],

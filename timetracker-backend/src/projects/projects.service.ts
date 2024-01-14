@@ -35,6 +35,14 @@ export class ProjectsService {
     );
   }
 
+  async getProject(id: number) {
+    return this.dbClient.projects.findUnique({
+      where: {
+        id: id,
+      },
+    });
+  }
+
   async mapProjects(projects: Projects[]) {
     return projects.map((p) => {
       return {
