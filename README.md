@@ -19,7 +19,7 @@ TimeTracker — это приложение для отслеживания вр
 1. Клонируйте репозиторий:
 
 ```bash
-git clone https://github.com/your-username/TimeTracker.git
+git clone https://github.com/ashenoooone/timetracker.git
 cd TimeTracker
 # Установка backend зависимостей
 cd backend
