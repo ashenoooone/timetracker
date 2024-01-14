@@ -13,6 +13,7 @@ model Users {
   password     String
   role         Role[]          @default([USER])
   verified     Boolean         @default(false) @map("_v")
+  refreshToken String?
   projects     Projects[]
   time_entries TimeEntries[]
   settings     UsersSettings[]
