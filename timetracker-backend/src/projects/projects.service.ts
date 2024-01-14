@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { Projects } from '@prisma/client';
 
@@ -7,6 +7,17 @@ export class ProjectsService {
   constructor(private readonly dbClient: DatabaseService) {}
 
   async createProject(createProjectDto: { userId: number; name: string }) {
+    const existingProject = this.dbClient.projects.findFirst({
+      where: {
+        usersId: createProjectDto.userId,
+        name: createProjectDto.name,
+      },
+    });
+
+    if (existingProject) {
+      throw new BadRequestException('Такой проект уже существует');
+    }
+
     return this.dbClient.projects.create({
       data: {
         usersId: createProjectDto.userId,
