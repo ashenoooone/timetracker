@@ -22,7 +22,7 @@ TimeTracker — это приложение для отслеживания вр
 git clone https://github.com/ashenoooone/timetracker.git
 cd TimeTracker
 # Установка backend зависимостей
-cd backend
+cd timetracker-backend
 npm install
 
 # Установка frontend зависимостей
