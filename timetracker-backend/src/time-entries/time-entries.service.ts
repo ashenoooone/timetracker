@@ -12,9 +12,6 @@ export class TimeEntriesService {
   ) {}
 
   async getTimeEntries(getTimeEntriesDto: GetTimeEntriesDto) {
-    console.log(getTimeEntriesDto.from);
-    console.log(typeof getTimeEntriesDto.from);
-
     return this.dbClient.timeEntries.findMany({
       where: {
         usersId: getTimeEntriesDto.userId,
