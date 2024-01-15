@@ -25,9 +25,15 @@ export class AuthService {
         email: dto.email,
       },
     });
+
     if (!user) {
       throw new BadRequestException('Пользователь не найден.');
     }
+
+    if (!user.verified) {
+      throw new BadRequestException('Подтвердите аккаунт по email');
+    }
+
     const isMatch = await compare(dto.password, user.password);
 
     if (!isMatch) {

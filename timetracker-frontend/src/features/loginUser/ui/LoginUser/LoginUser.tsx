@@ -16,6 +16,7 @@ import useRequest from "@/shared/hooks/useRequest";
 import { useToast } from "@/shared/ui/toast";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/router";
+import { IAxiosError } from "@/shared/api/types";
 
 interface LoginUserProps {
   className?: string;
@@ -23,7 +24,10 @@ interface LoginUserProps {
 
 export const LoginUser = (props: LoginUserProps) => {
   const { className = "" } = props;
-  const { isLoading, response, sendRequest, error } = useRequest();
+  const { isLoading, response, sendRequest, error } = useRequest<
+    any,
+    IAxiosError
+  >();
   const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,7 +51,7 @@ export const LoginUser = (props: LoginUserProps) => {
     if (error) {
       toast({
         title: "ОШИБКА",
-        description: error.message,
+        description: error?.response?.data.message ?? "Непредвиденная ошибка",
         variant: "destructive",
         duration: 2000,
       });
