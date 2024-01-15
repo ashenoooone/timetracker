@@ -5,44 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="wip login">
-      <change afterPath="$PROJECT_DIR$/env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/generateSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/createEntity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/createFeature.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/createPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/createWidget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/segments/createApi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/segments/createLib.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/segments/createModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/segments/createPublicApi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/segments/createUi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/fs/existAsync/existAsync.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/toLowerCase/toLowerCase.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/toUpperCase/toUpperCase.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/loginUser/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/loginUser/model/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/api/api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/Page/Page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/Page/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/button/button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/button/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/card/card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/card/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/input/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/input/input.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/label/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/label/label.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/hooks/useRequest.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/toast/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/typography/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/typography/typography.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/lib/.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +29,9 @@
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2axYsi3IWB4Nfh7Wj18ACC27sVT" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -82,8 +53,9 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ashen\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "actions.on.save",
+    "settings.editor.selected.configurable": "editor.preferences.import",
     "ts.external.directory.path": "C:\\projects\\timetracker\\timetracker-frontend\\node_modules\\typescript\\lib",
+    "typescript.add.unambiguous.imports.on.the.fly": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -92,6 +64,7 @@
       <map>
         <entry key="com.haulmont.rcb.reactComponents" value="false" />
         <entry key="com.haulmont.rcb.reactInspector" value="false" />
+        <entry key="com.haulmont.rcb.storybook" value="false" />
       </map>
     </option>
   </component>
@@ -100,11 +73,11 @@
       <recent name="C:\projects\timetracker\timetracker-frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\toast" />
       <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\input" />
       <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\card" />
       <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\label" />
       <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\button" />
-      <recent name="C:\projects\timetracker\timetracker-frontend\src\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -132,7 +105,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1705261907566</updated>
-      <workItem from="1705261910856" duration="4407000" />
+      <workItem from="1705261910856" duration="4570000" />
+      <workItem from="1705312447809" duration="2776000" />
     </task>
     <task id="LOCAL-00001" summary="init frontend">
       <option name="closed" value="true" />
@@ -158,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705263775984</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="wip login">
+      <option name="closed" value="true" />
+      <created>1705266543932</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1705266543932</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

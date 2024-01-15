@@ -1,6 +1,7 @@
 import React from "react";
 import { LoginUser } from "@/features/loginUser";
 import { Page } from "@/shared/ui/Page/Page";
+import { Toaster } from "@/shared/ui/toast";
 
 interface loginProps {}
 
@@ -10,6 +11,7 @@ export default function LoginPage(props: loginProps) {
       <Page className={"flex items-center"}>
         <LoginUser className={"w-[500px]"} />
       </Page>
+      <Toaster />
     </div>
   );
 }

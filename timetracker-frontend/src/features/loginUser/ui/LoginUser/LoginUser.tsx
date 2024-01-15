@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -8,8 +8,13 @@ import {
   CardTitle,
 } from "@/shared/ui/card";
 import { Label } from "@/shared/ui/label";
-import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
+import { Button } from "@/shared/ui/button";
+import { Typography } from "@/shared/ui/typography";
+import Link from "next/link";
+import useRequest from "@/shared/hooks/useRequest";
+import { useToast } from "@/shared/ui/toast";
+import { Loader2 } from "lucide-react";
 
 interface LoginUserProps {
   className?: string;
@@ -17,6 +22,30 @@ interface LoginUserProps {
 
 export const LoginUser = (props: LoginUserProps) => {
   const { className = "" } = props;
+  const { isLoading, response, sendRequest, error } = useRequest();
+  const { toast } = useToast();
+
+  const onLoginClick = useCallback(
+    async (event: React.MouseEvent<HTMLButtonElement>) => {
+      await sendRequest({
+        method: "POST",
+        url: "login",
+      });
+    },
+    [sendRequest]
+  );
+
+  useEffect(() => {
+    if (error) {
+      toast({
+        title: "ОШИБКА",
+        description: error.message,
+        variant: "destructive",
+        duration: 2000,
+      });
+    }
+  }, [error, toast]);
+
   return (
     <Card className={className}>
       <CardHeader className="space-y-1">
@@ -33,8 +62,26 @@ export const LoginUser = (props: LoginUserProps) => {
           <Input id="password" type="password" />
         </div>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full">Авторизоваться</Button>
+      <CardFooter className={"flex flex-col"}>
+        <Button disabled={isLoading} className="w-full" onClick={onLoginClick}>
+          {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          Авторизоваться
+        </Button>
+        <div className={"relative w-full flex justify-center mt-4"}>
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t border-primary"></span>
+          </div>
+          <Typography
+            className={"relative bg-background px-2"}
+            affects={"small"}
+            variant={"p"}
+          >
+            Нет аккаунта?
+          </Typography>
+        </div>
+        <Button variant={"link"}>
+          <Link href={"/registration"}>Регистрация</Link>
+        </Button>
       </CardFooter>
     </Card>
   );
