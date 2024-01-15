@@ -54,11 +54,11 @@ export const LoginUser = (props: LoginUserProps) => {
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">Почта</Label>
           <Input id="email" type="email" placeholder="m@example.com" />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Пароль</Label>
           <Input id="password" type="password" />
         </div>
       </CardContent>
