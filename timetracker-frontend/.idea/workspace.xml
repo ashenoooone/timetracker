@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="wip login page">
-      <change afterPath="$PROJECT_DIR$/src/features/registerUser/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/registerUser/ui/RegisterUser/RegisterUser.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/registerUser/validation/validation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/registration.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/api/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/main.ts" afterDir="false" />
+    <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="feat регистрация тоаст если все успешно">
+      <change afterPath="$PROJECT_DIR$/src/pages/profile/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/loginUser/model/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/button/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/button/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/input/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/input/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/segments/createPublicApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/createSlice/sliceCreators/segments/createPublicApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/registerUser/ui/RegisterUser/RegisterUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/registerUser/ui/RegisterUser/RegisterUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/hello.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +105,7 @@
       <option name="presentableId" value="Default" />
       <updated>1705261907566</updated>
       <workItem from="1705261910856" duration="4570000" />
-      <workItem from="1705312447809" duration="8522000" />
+      <workItem from="1705312447809" duration="11374000" />
     </task>
     <task id="LOCAL-00001" summary="init frontend">
       <option name="closed" value="true" />
@@ -159,7 +155,23 @@
       <option name="project" value="LOCAL" />
       <updated>1705315607117</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat cors + страница регистрации">
+      <option name="closed" value="true" />
+      <created>1705337129757</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1705337129757</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat регистрация тоаст если все успешно">
+      <option name="closed" value="true" />
+      <created>1705342713133</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1705342713133</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +188,8 @@
     <MESSAGE value="feat next js + shadcn + tailwind css :)" />
     <MESSAGE value="wip login" />
     <MESSAGE value="wip login page" />
-    <option name="LAST_COMMIT_MESSAGE" value="wip login page" />
+    <MESSAGE value="feat cors + страница регистрации" />
+    <MESSAGE value="feat регистрация тоаст если все успешно" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat регистрация тоаст если все успешно" />
   </component>
 </project>

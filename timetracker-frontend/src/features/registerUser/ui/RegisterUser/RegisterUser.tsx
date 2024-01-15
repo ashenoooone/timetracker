@@ -90,7 +90,7 @@ export const RegisterUser = (props: RegisterUserProps) => {
         return event.target.value;
       });
     },
-    [errors.errors]
+    []
   );
 
   useEffect(() => {
@@ -263,7 +263,7 @@ export const RegisterUser = (props: RegisterUserProps) => {
           </Typography>
         </div>
         <Button variant={"link"}>
-          <Link href={"/login"}>Авторизация</Link>
+          <Link href={"login"}>Авторизация</Link>
         </Button>
       </CardFooter>
     </Card>

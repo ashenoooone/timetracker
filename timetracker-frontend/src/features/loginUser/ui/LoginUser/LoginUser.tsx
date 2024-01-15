@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -15,6 +15,7 @@ import Link from "next/link";
 import useRequest from "@/shared/hooks/useRequest";
 import { useToast } from "@/shared/ui/toast";
 import { Loader2 } from "lucide-react";
+import { useRouter } from "next/router";
 
 interface LoginUserProps {
   className?: string;
@@ -24,15 +25,22 @@ export const LoginUser = (props: LoginUserProps) => {
   const { className = "" } = props;
   const { isLoading, response, sendRequest, error } = useRequest();
   const { toast } = useToast();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const onLoginClick = useCallback(
     async (event: React.MouseEvent<HTMLButtonElement>) => {
       await sendRequest({
         method: "POST",
-        url: "login",
+        url: "/auth/login",
+        data: {
+          email,
+          password,
+        },
       });
     },
-    [sendRequest]
+    [email, password, sendRequest]
   );
 
   useEffect(() => {
@@ -46,6 +54,26 @@ export const LoginUser = (props: LoginUserProps) => {
     }
   }, [error, toast]);
 
+  useEffect(() => {
+    if (response?.status === 201) {
+      router.push("/profile");
+    }
+  }, [response?.status, router]);
+
+  const handleEmailChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setEmail(event.target.value);
+    },
+    []
+  );
+
+  const handlePasswordChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setPassword(event.target.value);
+    },
+    []
+  );
+
   return (
     <Card className={className}>
       <CardHeader className="space-y-1">
@@ -55,11 +83,22 @@ export const LoginUser = (props: LoginUserProps) => {
       <CardContent className="grid gap-4">
         <div className="grid gap-2">
           <Label htmlFor="email">Почта</Label>
-          <Input id="email" type="email" placeholder="m@example.com" />
+          <Input
+            id="email"
+            type="email"
+            placeholder="m@example.com"
+            value={email}
+            onChange={handleEmailChange}
+          />
         </div>
         <div className="grid gap-2">
           <Label htmlFor="password">Пароль</Label>
-          <Input id="password" type="password" />
+          <Input
+            id="password"
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
         </div>
       </CardContent>
       <CardFooter className={"flex flex-col"}>
@@ -79,8 +118,8 @@ export const LoginUser = (props: LoginUserProps) => {
             Нет аккаунта?
           </Typography>
         </div>
-        <Button variant={"link"}>
-          <Link href={"/registration"}>Регистрация</Link>
+        <Button type={"button"} variant={"link"}>
+          <Link href={"registration"}>Регистрация</Link>
         </Button>
       </CardFooter>
     </Card>
