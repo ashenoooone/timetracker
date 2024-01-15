@@ -15,7 +15,7 @@ import Link from "next/link";
 import useRequest from "@/shared/hooks/useRequest";
 import { useToast } from "@/shared/ui/toast";
 import { Loader2, MailCheck } from "lucide-react";
-import { IRegisterValidation } from "@/features/registerUser/validation/validation";
+import { IRegisterValidation } from "../../validation/validation";
 import { IAxiosError } from "@/shared/api/types";
 
 interface RegisterUserProps {
@@ -86,30 +86,28 @@ export const RegisterUser = (props: RegisterUserProps) => {
 
   const onEmailChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setEmail(() => {
-        return event.target.value;
-      });
-    },
-    []
-  );
+      const newEmail = event.target.value;
 
-  useEffect(() => {
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setErrors({
-        errors: {
-          ...errors.errors,
-          email: "Введите корректный адрес электронной почты",
-        },
-      });
-    } else {
-      setErrors({
-        errors: {
-          ...errors.errors,
-          email: null,
-        },
-      });
-    }
-  }, [email, errors.errors]);
+      if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(newEmail)) {
+        setErrors({
+          errors: {
+            ...errors.errors,
+            email: "Введите корректный адрес электронной почты",
+          },
+        });
+      } else {
+        setErrors({
+          errors: {
+            ...errors.errors,
+            email: null,
+          },
+        });
+      }
+
+      setEmail(newEmail);
+    },
+    [errors.errors]
+  );
 
   const getPasswordError = useCallback((password: string) => {
     // Минимальная длина пароля: 6 символов
@@ -143,58 +141,54 @@ export const RegisterUser = (props: RegisterUserProps) => {
 
   const onPasswordChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setPassword(() => {
-        return event.target.value;
-      });
-    },
-    []
-  );
+      const newPassword = event.target.value;
 
-  useEffect(() => {
-    const passwordError = getPasswordError(password);
-    if (passwordError.length > 0) {
-      setErrors({
-        errors: {
-          ...errors.errors,
-          password: passwordError,
-        },
-      });
-    } else {
-      setErrors({
-        errors: {
-          ...errors.errors,
-          password: null,
-        },
-      });
-    }
-  }, [errors.errors, getPasswordError, password]);
+      const passwordError = getPasswordError(newPassword);
+      if (passwordError.length > 0) {
+        setErrors({
+          errors: {
+            ...errors.errors,
+            password: passwordError,
+          },
+        });
+      } else {
+        setErrors({
+          errors: {
+            ...errors.errors,
+            password: null,
+          },
+        });
+      }
+
+      setPassword(newPassword);
+    },
+    [errors.errors, getPasswordError]
+  );
 
   const onConfirmPasswordChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setConfirmPassword(() => {
-        return event.target.value;
-      });
-    },
-    []
-  );
+      const newConfirmPassword = event.target.value;
 
-  useEffect(() => {
-    if (confirmPassword !== password) {
-      setErrors({
-        errors: {
-          ...errors.errors,
-          confirmPassword: "Пароли должны совпадать",
-        },
-      });
-    } else {
-      setErrors({
-        errors: {
-          ...errors.errors,
-          confirmPassword: null,
-        },
-      });
-    }
-  }, [confirmPassword, errors.errors, password]);
+      if (newConfirmPassword !== password) {
+        setErrors({
+          errors: {
+            ...errors.errors,
+            confirmPassword: "Пароли должны совпадать",
+          },
+        });
+      } else {
+        setErrors({
+          errors: {
+            ...errors.errors,
+            confirmPassword: null,
+          },
+        });
+      }
+
+      setConfirmPassword(newConfirmPassword);
+    },
+    [errors.errors, password]
+  );
 
   return (
     <Card className={className}>

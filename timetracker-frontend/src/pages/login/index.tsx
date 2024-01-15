@@ -1,9 +1,9 @@
 import React from "react";
-import { LoginUser } from "@/features/loginUser";
 import { Page } from "@/shared/ui/Page/Page";
+import { LoginUser } from "@/features/loginUser";
 import { Toaster } from "@/shared/ui/toast";
 
-export default function login() {
+const Index = () => {
   return (
     <div className={"bg-background flex min-h-screen"}>
       <Page className={"flex items-center"}>
@@ -12,4 +12,6 @@ export default function login() {
       <Toaster />
     </div>
   );
-}
+};
+
+export default Index;

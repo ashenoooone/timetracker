@@ -1,9 +1,9 @@
 import React from "react";
-import { RegisterUser } from "@/features/registerUser";
 import { Page } from "@/shared/ui/Page/Page";
+import { RegisterUser } from "@/features/registerUser";
 import { Toaster } from "@/shared/ui/toast";
 
-export default function registration() {
+const Index = () => {
   return (
     <div className={"bg-background flex min-h-screen"}>
       <Page className={"flex items-center"}>
@@ -12,4 +12,6 @@ export default function registration() {
       <Toaster />
     </div>
   );
-}
+};
+
+export default Index;
