@@ -14,7 +14,7 @@ import { Typography } from "@/shared/ui/typography";
 import Link from "next/link";
 import useRequest from "@/shared/hooks/useRequest";
 import { useToast } from "@/shared/ui/toast";
-import { Loader2 } from "lucide-react";
+import { Loader2, MailCheck } from "lucide-react";
 import { IRegisterValidation } from "@/features/registerUser/validation/validation";
 import { IAxiosError } from "@/shared/api/types";
 
@@ -69,29 +69,47 @@ export const RegisterUser = (props: RegisterUserProps) => {
     }
   }, [error, toast]);
 
+  useEffect(() => {
+    if (response?.status === 201) {
+      toast({
+        title: "Регистрация успешно завершена",
+        description: (
+          <div className={"flex items-center gap-4"}>
+            <MailCheck />
+            Подтверждение выслано на почту
+          </div>
+        ),
+        duration: 2000,
+      });
+    }
+  }, [error?.response?.data.message, response?.status, toast]);
+
   const onEmailChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setEmail(() => {
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(event.target.value)) {
-          setErrors({
-            errors: {
-              ...errors.errors,
-              email: "Введите корректный адрес электронной почты",
-            },
-          });
-        } else {
-          setErrors({
-            errors: {
-              ...errors.errors,
-              email: null,
-            },
-          });
-        }
         return event.target.value;
       });
     },
     [errors.errors]
   );
+
+  useEffect(() => {
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+      setErrors({
+        errors: {
+          ...errors.errors,
+          email: "Введите корректный адрес электронной почты",
+        },
+      });
+    } else {
+      setErrors({
+        errors: {
+          ...errors.errors,
+          email: null,
+        },
+      });
+    }
+  }, [email, errors.errors]);
 
   const getPasswordError = useCallback((password: string) => {
     // Минимальная длина пароля: 6 символов
@@ -126,52 +144,57 @@ export const RegisterUser = (props: RegisterUserProps) => {
   const onPasswordChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setPassword(() => {
-        const passwordError = getPasswordError(event.target.value);
-
-        if (getPasswordError(event.target.value).length > 0) {
-          setErrors({
-            errors: {
-              ...errors.errors,
-              password: passwordError,
-            },
-          });
-        } else {
-          setErrors({
-            errors: {
-              ...errors.errors,
-              password: null,
-            },
-          });
-        }
         return event.target.value;
       });
     },
-    [errors.errors, getPasswordError]
+    []
   );
+
+  useEffect(() => {
+    const passwordError = getPasswordError(password);
+    if (passwordError.length > 0) {
+      setErrors({
+        errors: {
+          ...errors.errors,
+          password: passwordError,
+        },
+      });
+    } else {
+      setErrors({
+        errors: {
+          ...errors.errors,
+          password: null,
+        },
+      });
+    }
+  }, [errors.errors, getPasswordError, password]);
 
   const onConfirmPasswordChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setConfirmPassword(() => {
-        if (event.target.value !== password) {
-          setErrors({
-            errors: {
-              ...errors.errors,
-              confirmPassword: "Пароли должны совпадать",
-            },
-          });
-        } else {
-          setErrors({
-            errors: {
-              ...errors.errors,
-              confirmPassword: null,
-            },
-          });
-        }
         return event.target.value;
       });
     },
-    [errors.errors, password]
+    []
   );
+
+  useEffect(() => {
+    if (confirmPassword !== password) {
+      setErrors({
+        errors: {
+          ...errors.errors,
+          confirmPassword: "Пароли должны совпадать",
+        },
+      });
+    } else {
+      setErrors({
+        errors: {
+          ...errors.errors,
+          confirmPassword: null,
+        },
+      });
+    }
+  }, [confirmPassword, errors.errors, password]);
 
   return (
     <Card className={className}>
