@@ -27,6 +27,7 @@ import * as Joi from 'joi';
         MAIL_DOMAIN: Joi.string().required(),
         MAIL_PASS: Joi.string().required(),
         MAIL_ADDRESS: Joi.string().required(),
+        BACKEND_ADDRESS: Joi.string().required(),
       }),
     }),
     EmailConfirmationModule,

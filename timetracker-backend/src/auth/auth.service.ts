@@ -8,6 +8,9 @@ import { DatabaseService } from '../database/database.service';
 import { Users } from '@prisma/client';
 import { ConfigService } from '@nestjs/config';
 import { UserSettingsService } from '../user-settings/user-settings.service';
+import { MapUserDto } from './dto/mapUser.dto';
+import { TokensDto } from './dto/tokens.dto';
+import { LoginReturnDto } from './dto/loginReturn.dto';
 
 @Injectable()
 export class AuthService {
@@ -19,7 +22,21 @@ export class AuthService {
     private readonly configService: ConfigService,
   ) {}
 
-  async login(dto: AuthDto) {
+  async check(userId: number): Promise<MapUserDto> {
+    const user = await this.dbClient.users.findFirst({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user.verified) {
+      throw new BadRequestException('Пользователь не подтвержден');
+    }
+
+    return this.mapUser(user);
+  }
+
+  async login(dto: AuthDto): Promise<LoginReturnDto> {
     const user = await this.dbClient.users.findFirst({
       where: {
         email: dto.email,
@@ -60,7 +77,7 @@ export class AuthService {
     };
   }
 
-  mapUser(user: Users) {
+  mapUser(user: Users): MapUserDto {
     return {
       id: user.id,
       email: user.email,
@@ -68,7 +85,7 @@ export class AuthService {
     };
   }
 
-  async refreshTokens(refreshToken: TokenDtoDto) {
+  async refreshTokens(refreshToken: TokenDtoDto): Promise<LoginReturnDto> {
     const { token } = refreshToken;
 
     const result = await this.jwtService.verifyAsync(token);
@@ -129,7 +146,10 @@ export class AuthService {
     return this.mapUser(createdUser);
   }
 
-  async generateTokensPair(data: { id: number; email: string }) {
+  async generateTokensPair(data: {
+    id: number;
+    email: string;
+  }): Promise<TokensDto> {
     const refreshToken = await this.jwtService.signAsync(data, {
       expiresIn: this.configService.get('JWT_REFRESH_TOKEN_EXPIRATION_TIME'),
     });

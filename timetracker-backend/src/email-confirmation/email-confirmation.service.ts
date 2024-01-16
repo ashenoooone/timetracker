@@ -2,12 +2,14 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { DatabaseService } from '../database/database.service';
 import { randomBytes } from 'crypto';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class EmailConfirmationService {
   constructor(
     private readonly mailService: MailerService,
     private readonly dbClient: DatabaseService,
+    private readonly configService: ConfigService,
   ) {}
 
   async confirmEmail(token: string) {
@@ -58,7 +60,9 @@ export class EmailConfirmationService {
         template: './confirmation',
         context: {
           name: email,
-          url: `http://localhost:3000/email/confirm/${token}`,
+          url:
+            this.configService.get('BACKEND_ADDRESS') +
+            `/email/confirm/${token}`,
         },
       });
       await this.dbClient.emailVerifications.create({
