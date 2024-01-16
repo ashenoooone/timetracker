@@ -12,11 +12,16 @@ import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
 import { Typography } from "@/shared/ui/typography";
 import Link from "next/link";
-import useRequest from "@/shared/hooks/useRequest";
 import { useToast } from "@/shared/ui/toast";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/router";
-import { IAxiosError } from "@/shared/api/types";
+import { loginResponseSchema } from "@/features/loginUser/model/types";
+import {
+  COOKIES_ACCESS_TOKEN_KEY,
+  COOKIES_REFRESH_TOKEN_KEY,
+} from "@/shared/consts/cookies";
+import Cookies from "js-cookie";
+import { useAuth } from "@/features/loginUser/api/useAuth";
 
 interface LoginUserProps {
   className?: string;
@@ -24,28 +29,18 @@ interface LoginUserProps {
 
 export const LoginUser = (props: LoginUserProps) => {
   const { className = "" } = props;
-  const { isLoading, response, sendRequest, error } = useRequest<
-    any,
-    IAxiosError
-  >();
+  const { isLoading, response, sendLoginRequest, error } = useAuth();
   const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const onLoginClick = useCallback(
-    async (event: React.MouseEvent<HTMLButtonElement>) => {
-      await sendRequest({
-        method: "POST",
-        url: "/auth/login",
-        data: {
-          email,
-          password,
-        },
-      });
-    },
-    [email, password, sendRequest]
-  );
+  const onLoginClick = useCallback(async () => {
+    await sendLoginRequest({
+      email,
+      password,
+    });
+  }, [email, password, sendLoginRequest]);
 
   useEffect(() => {
     if (error) {
@@ -60,9 +55,14 @@ export const LoginUser = (props: LoginUserProps) => {
 
   useEffect(() => {
     if (response?.status === 201) {
+      const { refreshToken, accessToken } = loginResponseSchema.parse(
+        response.data
+      );
+      Cookies.set(COOKIES_ACCESS_TOKEN_KEY, accessToken);
+      Cookies.set(COOKIES_REFRESH_TOKEN_KEY, refreshToken);
       router.push("/profile");
     }
-  }, [response?.status, router]);
+  }, [response?.data, response?.status, router]);
 
   const handleEmailChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {

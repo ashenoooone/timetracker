@@ -10,10 +10,14 @@ interface UseRequestProps<T = any> {
   headers?: AxiosRequestConfig["headers"];
 }
 
-interface UseRequestResult<TData = any, TError = any> {
+export interface IUseRequestState<TData = any, TError = any> {
   error: AxiosError<TError> | null;
   isLoading: boolean;
   response: AxiosResponse<TData> | null;
+}
+
+interface UseRequestResult<TData = any, TError = any>
+  extends IUseRequestState<TData, TError> {
   sendRequest: (props: UseRequestProps<TData>) => Promise<void>;
 }
 
@@ -32,7 +36,7 @@ const useRequest = <TData = any, TError = any>(): UseRequestResult<
     try {
       const { url, method = "GET", data, params, headers } = props;
       const config: AxiosRequestConfig = { url, method, data, params, headers };
-      const result = await $api(config);
+      const result = await $api<TData>(config);
       setResponse(result);
     } catch (error) {
       setError(error as AxiosError<TError>);
