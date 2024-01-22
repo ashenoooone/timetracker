@@ -34,7 +34,6 @@ export class AuthController {
     type: MapUserDto,
   })
   check(@Req() request: RequestWithUser) {
-    console.log(request.user);
     return this.authService.check(request.user.id);
   }
 
