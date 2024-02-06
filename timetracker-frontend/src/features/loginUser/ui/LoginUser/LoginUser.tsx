@@ -58,8 +58,12 @@ export const LoginUser = (props: LoginUserProps) => {
       const { refreshToken, accessToken } = loginResponseSchema.parse(
         response.data
       );
-      Cookies.set(COOKIES_ACCESS_TOKEN_KEY, accessToken);
-      Cookies.set(COOKIES_REFRESH_TOKEN_KEY, refreshToken);
+      Cookies.set(COOKIES_ACCESS_TOKEN_KEY, accessToken, {
+        sameSite: "strict",
+      });
+      Cookies.set(COOKIES_REFRESH_TOKEN_KEY, refreshToken, {
+        sameSite: "strict",
+      });
       router.push("/profile");
     }
   }, [response?.data, response?.status, router]);

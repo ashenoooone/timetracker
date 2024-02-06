@@ -1,36 +1,25 @@
 import React from "react";
-import { checkMeServerRequest } from "@/entities/user";
+import { $user, checkUserEv } from "@/entities/user/model/store";
+import { useUnit } from "effector-react";
 import { GetServerSideProps } from "next";
-import { UserType } from "@/entities/user/model/types";
+import { allSettled, fork, serialize } from "effector";
 
-interface Props {
-  user?: UserType;
-}
+function Index() {
+  const [user] = useUnit([$user]);
 
-export default function index(props: Props) {
-  return <div className={""}>{JSON.stringify(props.user)}</div>;
+  return <div className={""}>{JSON.stringify(user)}</div>;
 }
 
 export const getServerSideProps = (async (context) => {
-  const { access_token } = context.req.cookies;
-  const checkMe = await checkMeServerRequest({
-    token: access_token,
-  });
+  const scope = fork();
 
-  if (checkMe.error) {
-    console.log(checkMe.error);
-
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
-  }
+  await allSettled(checkUserEv, { scope });
 
   return {
     props: {
-      user: checkMe.response?.data,
+      values: serialize(scope),
     },
   };
-}) satisfies GetServerSideProps<Props>;
+}) satisfies GetServerSideProps;
+
+export default Index;

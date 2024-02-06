@@ -2,7 +2,6 @@ import React from "react";
 import { Page } from "@/shared/ui/Page/Page";
 import { LoginUser } from "@/features/loginUser";
 import { Toaster } from "@/shared/ui/toast";
-import { checkMeServerRequest } from "@/entities/user";
 import { GetServerSideProps } from "next";
 
 const Index = () => {
@@ -17,20 +16,6 @@ const Index = () => {
 };
 
 export const getServerSideProps = (async (context) => {
-  const { access_token } = context.req.cookies;
-  const checkMe = await checkMeServerRequest({
-    token: access_token,
-  });
-
-  if (!checkMe.error) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
-
   return {
     props: {},
   };

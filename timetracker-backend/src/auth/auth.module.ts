@@ -6,7 +6,6 @@ import { EmailConfirmationModule } from '../email-confirmation/email-confirmatio
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getJWTConfig } from '../config/jwt.config';
-import { RefreshStrategy } from './strategies/refresh.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { UserSettingsModule } from '../user-settings/user-settings.module';
 
@@ -22,6 +21,6 @@ import { UserSettingsModule } from '../user-settings/user-settings.module';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, RefreshStrategy, JwtStrategy],
+  providers: [AuthService, JwtStrategy],
 })
 export class AuthModule {}

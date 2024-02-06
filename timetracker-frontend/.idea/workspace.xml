@@ -4,9 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="feat добавил дтошки + задокументировал для свагера + добавил роут для проверка текущего токена юзера + вынес адрес сайта в енв">
+    <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="feat добавил проверку, чтобы авторизованные пользователи не могли попасть на страницу реги или авторизации">
+      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/user/api/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/user/api/useGetMe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/user/model/consts.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/user/model/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/lib/recordToCookieString.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/lib/refreshTokens.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/navigation-menu/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/laout/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/laout/ui/footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/laout/ui/header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/laout/ui/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/auth/auth.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/guards/AccessGuard.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/auth/guards/AccessGuard.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/guards/RefreshGuard.guard.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/strategies/refresh.strategy.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/model/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/model/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/loginUser/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/loginUser/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/api.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,25 +61,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/projects/timetracker/timetracker-frontend/src/features",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ashen\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "ts.external.directory.path": "C:\\projects\\timetracker\\timetracker-frontend\\node_modules\\typescript\\lib",
-    "typescript.add.unambiguous.imports.on.the.fly": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/projects/timetracker/timetracker-frontend/src/features&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\ashen\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.3058104&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\projects\\timetracker\\timetracker-frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;typescript.add.unambiguous.imports.on.the.fly&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -67,11 +96,11 @@
       <recent name="C:\projects\timetracker\timetracker-frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\projects\timetracker\timetracker-frontend\src\widgets\laout" />
+      <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\navigation-menu" />
       <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\toast" />
       <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\input" />
       <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\card" />
-      <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\label" />
-      <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\button" />
     </key>
   </component>
   <component name="RunManager">
@@ -101,7 +130,24 @@
       <updated>1705261907566</updated>
       <workItem from="1705261910856" duration="4570000" />
       <workItem from="1705312447809" duration="14919000" />
-      <workItem from="1705430356543" duration="6720000" />
+      <workItem from="1705430356543" duration="7818000" />
+      <workItem from="1705438542964" duration="14000" />
+      <workItem from="1705438569721" duration="57000" />
+      <workItem from="1705438638283" duration="115000" />
+      <workItem from="1705438763201" duration="26000" />
+      <workItem from="1705438802589" duration="492000" />
+      <workItem from="1705439310441" duration="208000" />
+      <workItem from="1705486366268" duration="996000" />
+      <workItem from="1705523826987" duration="1537000" />
+      <workItem from="1705597023392" duration="8273000" />
+      <workItem from="1705680123117" duration="6925000" />
+      <workItem from="1705699549039" duration="44000" />
+      <workItem from="1705745740788" duration="1535000" />
+      <workItem from="1705755825533" duration="10595000" />
+      <workItem from="1705837065403" duration="7026000" />
+      <workItem from="1705932083499" duration="3394000" />
+      <workItem from="1705938103064" duration="599000" />
+      <workItem from="1707234135159" duration="1539000" />
     </task>
     <task id="LOCAL-00001" summary="init frontend">
       <option name="closed" value="true" />
@@ -207,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705437332009</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat добавил проверку, чтобы авторизованные пользователи не могли попасть на страницу реги или авторизации">
+      <option name="closed" value="true" />
+      <created>1705437467775</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705437467775</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +285,7 @@
     <MESSAGE value="feat сделал , что нельзя авторизоваться пока не подтвержден email" />
     <MESSAGE value="feat добавил zod в проект для валидации + сделал авторизацию + ф-цию проверки, что юзер авторизован" />
     <MESSAGE value="feat добавил дтошки + задокументировал для свагера + добавил роут для проверка текущего токена юзера + вынес адрес сайта в енв" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat добавил дтошки + задокументировал для свагера + добавил роут для проверка текущего токена юзера + вынес адрес сайта в енв" />
+    <MESSAGE value="feat добавил проверку, чтобы авторизованные пользователи не могли попасть на страницу реги или авторизации" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat добавил проверку, чтобы авторизованные пользователи не могли попасть на страницу реги или авторизации" />
   </component>
 </project>
