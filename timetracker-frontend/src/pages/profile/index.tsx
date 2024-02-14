@@ -1,8 +1,8 @@
 import React from "react";
-import { $user, checkUserEv } from "@/entities/user/model/store";
+import { $user } from "@/entities/user/model/store";
 import { useUnit } from "effector-react";
 import { GetServerSideProps } from "next";
-import { allSettled, fork, serialize } from "effector";
+import { checkUserSsr } from "@/entities/user/api/check-user-ssr";
 
 function Index() {
   const [user] = useUnit([$user]);
@@ -11,15 +11,7 @@ function Index() {
 }
 
 export const getServerSideProps = (async (context) => {
-  const scope = fork();
-
-  await allSettled(checkUserEv, { scope });
-
-  return {
-    props: {
-      values: serialize(scope),
-    },
-  };
+  return await checkUserSsr(context);
 }) satisfies GetServerSideProps;
 
 export default Index;

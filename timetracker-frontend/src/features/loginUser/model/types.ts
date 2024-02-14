@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export const loginResponseSchema = z.object({
-  refreshToken: z.string(),
   accessToken: z.string(),
 });
 

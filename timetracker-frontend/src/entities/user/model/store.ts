@@ -1,60 +1,48 @@
-import { createEffect, createEvent, createStore, sample } from "effector";
+import { createEvent, createStore, sample } from "effector";
 import { UserType } from "@/entities/user";
-import { checkMe } from "../api/auth";
-import { AxiosError, AxiosResponse } from "axios";
 import { UserLoginStatus } from "./types";
 import { debug } from "patronum";
+import { checkUserQuery } from "../api/check-user-query";
 
 // declaring stores
 const $user = createStore<UserType | null>(null);
-const $userStatus = createStore(UserLoginStatus.INITIAL);
+const $userStatus = createStore<UserLoginStatus>("initial");
 
 // declaring events
-const setUserEv = createEvent<UserType>();
+const setUserEv = createEvent<UserType | null>();
 
 const resetUserEv = createEvent();
-const checkUserEv = createEvent();
+const checkUserEv = createEvent<{ token: string }>();
 
 // binding events to stores
 $user.on(setUserEv, (_, user) => user);
 $user.reset(resetUserEv);
 
-// declaring effects
-const checkUserFx = createEffect<
-  // cookies type
-  void,
-  AxiosResponse<{ user: UserType }>,
-  AxiosError
->();
-
 // binding effects to stores
-$userStatus.on(checkUserFx, (status) => {
-  if (status === UserLoginStatus.INITIAL) return UserLoginStatus.PENDING;
+$userStatus.on(checkUserQuery.$pending, (status) => {
+  if (status === "initial") return "pending";
   return status;
 });
-$userStatus.on(checkUserFx.done, () => UserLoginStatus.AUTHORIZED);
-$userStatus.on(checkUserFx.fail, () => UserLoginStatus.NOT_AUTHORIZED);
-
-// effects use
-checkUserFx.use(async () => await checkMe());
+$userStatus.on(checkUserQuery.$succeeded, () => "authorized");
+$userStatus.on(checkUserQuery.$failed, () => "not_authorized");
 
 // watchers
-debug(checkUserFx, $userStatus, $user);
+debug($userStatus, $user);
 
 // samples
 sample({
   clock: checkUserEv,
-  target: checkUserFx,
+  target: checkUserQuery.start,
 });
 
 sample({
-  clock: checkUserFx.doneData,
-  fn: (response) => response.data.user,
+  clock: checkUserQuery.$data,
   target: setUserEv,
+  filter: checkUserQuery.$succeeded,
 });
 
 sample({
-  clock: checkUserFx.fail,
+  clock: checkUserQuery.$failed,
   target: resetUserEv,
 });
 

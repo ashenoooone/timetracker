@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto/auth.dto';
-import { TokenDtoDto } from './dto/tokenDto.dto';
 import { RequestWithUser } from './interface/requestWithUser.interface';
 import { AccessGuard } from './guards/AccessGuard.guard';
 import { ApiOkResponse } from '@nestjs/swagger';
@@ -35,13 +34,5 @@ export class AuthController {
   })
   check(@Req() request: RequestWithUser) {
     return this.authService.check(request.user.id);
-  }
-
-  @ApiOkResponse({
-    type: LoginReturnDto,
-  })
-  @Post('/token/refresh')
-  refreshTokens(@Body() accessTokenDto: TokenDtoDto) {
-    return this.authService.refreshTokens(accessTokenDto);
   }
 }

@@ -3,6 +3,7 @@ import { Page } from "@/shared/ui/Page/Page";
 import { LoginUser } from "@/features/loginUser";
 import { Toaster } from "@/shared/ui/toast";
 import { GetServerSideProps } from "next";
+import { checkUserSsr } from "@/entities/user/api/check-user-ssr";
 
 const Index = () => {
   return (
@@ -16,9 +17,7 @@ const Index = () => {
 };
 
 export const getServerSideProps = (async (context) => {
-  return {
-    props: {},
-  };
+  return checkUserSsr(context, "authorized");
 }) satisfies GetServerSideProps;
 
 export default Index;

@@ -21,8 +21,6 @@ import { AppLoggerMiddleware } from './middlewares/AppLogger.middleware';
       validationSchema: Joi.object({
         JWT_ACCESS_TOKEN_SECRET: Joi.string().required(),
         JWT_ACCESS_TOKEN_EXPIRATION_TIME: Joi.string().required(),
-        JWT_REFRESH_TOKEN_SECRET: Joi.string().required(),
-        JWT_REFRESH_TOKEN_EXPIRATION_TIME: Joi.string().required(),
         DATABASE_URL: Joi.string().required(),
         MAIL_FROM: Joi.string().required(),
         MAIL_DOMAIN: Joi.string().required(),

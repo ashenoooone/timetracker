@@ -4,37 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="feat добавил проверку, чтобы авторизованные пользователи не могли попасть на страницу реги или авторизации">
-      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/user/api/auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/user/api/useGetMe.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/user/model/consts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/user/model/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/lib/recordToCookieString.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/lib/refreshTokens.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/navigation-menu/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/laout/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/laout/ui/footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/laout/ui/header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/laout/ui/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/auth/auth.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/guards/AccessGuard.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/auth/guards/AccessGuard.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/guards/RefreshGuard.guard.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/strategies/refresh.strategy.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+    <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="wip: авторизация на 1 токене">
+      <change afterPath="$PROJECT_DIR$/src/entities/user/api/check-user-query.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/user/api/check-user-ssr.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/loginUser/api/login-query.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/loginUser/model/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/registerUser/api/register-user-mutation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/registerUser/model/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/registerUser/model/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages-composite/registration/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages-composite/registration/ui/RegistrationPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/contracts/api-error-contract.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/contracts/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/lib/getObjectEntries.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/lib/routerModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/auth/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/auth/dto/tokens.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/auth/dto/tokens.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/src/middlewares/AppLogger.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/src/middlewares/AppLogger.middleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/api/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/api/check-me-server-request.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/api/useGetMe.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/model/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/model/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/user/model/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/model/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/loginUser/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/loginUser/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/loginUser/api/useAuth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/loginUser/model/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/loginUser/model/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/registerUser/ui/RegisterUser/RegisterUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/registerUser/ui/RegisterUser/RegisterUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/registerUser/validation/validation.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/registration/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/registration/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/api/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/refreshTokens.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +76,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/projects/timetracker/timetracker-frontend/src/features&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/projects/timetracker/timetracker-frontend/src/shared/lib&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -92,6 +101,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\lib" />
       <recent name="C:\projects\timetracker\timetracker-frontend\src\features" />
       <recent name="C:\projects\timetracker\timetracker-frontend" />
     </key>
@@ -147,7 +157,11 @@
       <workItem from="1705837065403" duration="7026000" />
       <workItem from="1705932083499" duration="3394000" />
       <workItem from="1705938103064" duration="599000" />
-      <workItem from="1707234135159" duration="1539000" />
+      <workItem from="1707234135159" duration="7250000" />
+      <workItem from="1707313405976" duration="439000" />
+      <workItem from="1707313865265" duration="7270000" />
+      <workItem from="1707669339221" duration="1333000" />
+      <workItem from="1707923968557" duration="2068000" />
     </task>
     <task id="LOCAL-00001" summary="init frontend">
       <option name="closed" value="true" />
@@ -261,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705437467775</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="wip: авторизация на 1 токене">
+      <option name="closed" value="true" />
+      <created>1707237188414</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1707237188414</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,6 +308,7 @@
     <MESSAGE value="feat добавил zod в проект для валидации + сделал авторизацию + ф-цию проверки, что юзер авторизован" />
     <MESSAGE value="feat добавил дтошки + задокументировал для свагера + добавил роут для проверка текущего токена юзера + вынес адрес сайта в енв" />
     <MESSAGE value="feat добавил проверку, чтобы авторизованные пользователи не могли попасть на страницу реги или авторизации" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat добавил проверку, чтобы авторизованные пользователи не могли попасть на страницу реги или авторизации" />
+    <MESSAGE value="wip: авторизация на 1 токене" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip: авторизация на 1 токене" />
   </component>
 </project>

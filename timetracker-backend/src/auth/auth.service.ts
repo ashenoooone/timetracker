@@ -3,7 +3,6 @@ import { AuthDto } from './dto/auth.dto';
 import { compare, genSalt, hash } from 'bcrypt';
 import { EmailConfirmationService } from '../email-confirmation/email-confirmation.service';
 import { JwtService } from '@nestjs/jwt';
-import { TokenDtoDto } from './dto/tokenDto.dto';
 import { DatabaseService } from '../database/database.service';
 import { Users } from '@prisma/client';
 import { ConfigService } from '@nestjs/config';
@@ -57,18 +56,9 @@ export class AuthService {
       throw new BadRequestException('Неверно введен пароль.');
     }
 
-    const tokens = await this.generateTokensPair({
+    const tokens = await this.generateToken({
       id: user.id,
       email: user.email,
-    });
-
-    await this.dbClient.users.update({
-      data: {
-        refreshToken: tokens.refreshToken,
-      },
-      where: {
-        id: user.id,
-      },
     });
 
     return {
@@ -82,39 +72,6 @@ export class AuthService {
       id: user.id,
       email: user.email,
       role: user.role,
-    };
-  }
-
-  async refreshTokens(refreshToken: TokenDtoDto): Promise<LoginReturnDto> {
-    const { token } = refreshToken;
-
-    const result = await this.jwtService.verifyAsync(token);
-
-    if (!result) throw new BadRequestException('Неверный токен.');
-
-    const user = await this.dbClient.users.findFirst({
-      where: {
-        email: result.email,
-      },
-    });
-
-    const tokens = await this.generateTokensPair({
-      email: user.email,
-      id: user.id,
-    });
-
-    await this.dbClient.users.update({
-      data: {
-        refreshToken: tokens.refreshToken,
-      },
-      where: {
-        id: user.id,
-      },
-    });
-
-    return {
-      user: this.mapUser(user),
-      ...tokens,
     };
   }
 
@@ -146,20 +103,12 @@ export class AuthService {
     return this.mapUser(createdUser);
   }
 
-  async generateTokensPair(data: {
-    id: number;
-    email: string;
-  }): Promise<TokensDto> {
-    const refreshToken = await this.jwtService.signAsync(data, {
-      expiresIn: this.configService.get('JWT_REFRESH_TOKEN_EXPIRATION_TIME'),
-    });
-
+  async generateToken(data: { id: number; email: string }): Promise<TokensDto> {
     const accessToken = await this.jwtService.signAsync(data, {
       expiresIn: this.configService.get('JWT_ACCESS_TOKEN_EXPIRATION_TIME'),
     });
 
     return {
-      refreshToken,
       accessToken,
     };
   }

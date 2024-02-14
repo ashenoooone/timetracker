@@ -13,9 +13,8 @@ export const UserSchema = z.object({
 
 export type UserType = z.infer<typeof UserSchema>;
 
-export enum UserLoginStatus {
-  INITIAL = 0,
-  AUTHORIZED = 1,
-  PENDING = 2,
-  NOT_AUTHORIZED = 3,
-}
+export type UserLoginStatus =
+  | "initial"
+  | "authorized"
+  | "pending"
+  | "not_authorized";

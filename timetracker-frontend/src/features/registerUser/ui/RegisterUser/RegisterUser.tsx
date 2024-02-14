@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { ChangeEvent, useCallback, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -12,11 +12,12 @@ import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
 import { Typography } from "@/shared/ui/typography";
 import Link from "next/link";
-import useRequest from "@/shared/hooks/useRequest";
-import { useToast } from "@/shared/ui/toast";
-import { Loader2, MailCheck } from "lucide-react";
-import { IRegisterValidation } from "../../validation/validation";
-import { IAxiosError } from "@/shared/api/types";
+import { Loader2 } from "lucide-react";
+import { createRegisterModel } from "../../model/store";
+import { useUnit } from "effector-react";
+import { toast } from "@/shared/ui/toast";
+
+const model = createRegisterModel();
 
 interface RegisterUserProps {
   className?: string;
@@ -24,171 +25,67 @@ interface RegisterUserProps {
 
 export const RegisterUser = (props: RegisterUserProps) => {
   const { className = "" } = props;
-  const { isLoading, response, sendRequest, error } = useRequest<
-    any,
-    IAxiosError
-  >();
-  const [errors, setErrors] = useState<IRegisterValidation>({
-    errors: {
-      email: null,
-      confirmPassword: null,
-      password: null,
-    },
-  });
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
 
-  const { toast } = useToast();
-
-  const formInvalid = useMemo(() => {
-    return Object.entries(errors.errors).some(([k, val]) => {
-      return !!val;
-    });
-  }, [errors.errors]);
-
-  const onRegisterClick = useCallback(async () => {
-    await sendRequest({
-      method: "post",
-      url: "/auth/register",
-      data: {
-        email,
-        password,
-      },
-    });
-  }, [email, password, sendRequest]);
-
-  useEffect(() => {
-    if (error) {
-      toast({
-        title: "ОШИБКА",
-        description: error?.response?.data.message ?? "Непредвиденная ошибка",
-        variant: "destructive",
-        duration: 2000,
-      });
-    }
-  }, [error, toast]);
-
-  useEffect(() => {
-    if (response?.status === 201) {
-      toast({
-        title: "Регистрация успешно завершена",
-        description: (
-          <div className={"flex items-center gap-4"}>
-            <MailCheck />
-            Подтверждение выслано на почту
-          </div>
-        ),
-        duration: 2000,
-      });
-    }
-  }, [error?.response?.data.message, response?.status, toast]);
+  const [
+    $email,
+    $errors,
+    $password,
+    $confirmPassword,
+    $formValid,
+    changeEmailEv,
+    changePasswordEv,
+    changeConfirmPasswordEv,
+    $pending,
+    registerUserEv,
+    $serverError,
+  ] = useUnit([
+    model.$email,
+    model.$errors,
+    model.$password,
+    model.$confirmPassword,
+    model.$formValid,
+    model.changeEmailEv,
+    model.changePasswordEv,
+    model.changeConfirmPasswordEv,
+    model.$pending,
+    model.registerUserEv,
+    model.$serverError,
+  ]);
 
   const onEmailChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newEmail = event.target.value;
-
-      if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(newEmail)) {
-        setErrors({
-          errors: {
-            ...errors.errors,
-            email: "Введите корректный адрес электронной почты",
-          },
-        });
-      } else {
-        setErrors({
-          errors: {
-            ...errors.errors,
-            email: null,
-          },
-        });
-      }
-
-      setEmail(newEmail);
+    (e: ChangeEvent<HTMLInputElement>) => {
+      changeEmailEv(e.target.value);
     },
-    [errors.errors]
+    [changeEmailEv]
   );
 
-  const getPasswordError = useCallback((password: string) => {
-    // Минимальная длина пароля: 6 символов
-    if (password.length < 6) {
-      return "Минимальная длина пароля должна быть 6.";
-    }
-
-    // Проверка наличия хотя бы одной заглавной буквы
-    if (!/[A-Z]/.test(password)) {
-      return "Пароль должен иметь хотя бы одну заглавную букву";
-    }
-
-    // Проверка наличия хотя бы одной строчной буквы
-    if (!/[a-z]/.test(password)) {
-      return "Пароль должен иметь хотя бы одной строчную букву.";
-    }
-
-    // Проверка наличия хотя бы одной цифры
-    if (!/\d/.test(password)) {
-      return "Пароль должен содержать хотя бы одну цифру.";
-    }
-
-    // Проверка наличия хотя бы одного специального символа
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-      return 'Пароль должен содержать хотя бы один специальный символ (!@#$%^&*(),.?":{}|<>)';
-    }
-
-    // Если все критерии выполнены, пароль считается валидным
-    return "";
-  }, []);
+  const onRegisterClick = useCallback(() => {
+    registerUserEv();
+  }, [registerUserEv]);
 
   const onPasswordChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newPassword = event.target.value;
-
-      const passwordError = getPasswordError(newPassword);
-      if (passwordError.length > 0) {
-        setErrors({
-          errors: {
-            ...errors.errors,
-            password: passwordError,
-          },
-        });
-      } else {
-        setErrors({
-          errors: {
-            ...errors.errors,
-            password: null,
-          },
-        });
-      }
-
-      setPassword(newPassword);
+    (e: ChangeEvent<HTMLInputElement>) => {
+      changePasswordEv(e.target.value);
     },
-    [errors.errors, getPasswordError]
+    [changePasswordEv]
   );
 
   const onConfirmPasswordChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newConfirmPassword = event.target.value;
-
-      if (newConfirmPassword !== password) {
-        setErrors({
-          errors: {
-            ...errors.errors,
-            confirmPassword: "Пароли должны совпадать",
-          },
-        });
-      } else {
-        setErrors({
-          errors: {
-            ...errors.errors,
-            confirmPassword: null,
-          },
-        });
-      }
-
-      setConfirmPassword(newConfirmPassword);
+    (e: ChangeEvent<HTMLInputElement>) => {
+      changeConfirmPasswordEv(e.target.value);
     },
-    [errors.errors, password]
+    [changeConfirmPasswordEv]
   );
+
+  useEffect(() => {
+    if ($serverError) {
+      toast({
+        variant: "destructive",
+        title: "Ошибка при регистрации",
+        description: $serverError,
+      });
+    }
+  }, [$serverError]);
 
   return (
     <Card className={className}>
@@ -204,44 +101,44 @@ export const RegisterUser = (props: RegisterUserProps) => {
             type="email"
             placeholder="m@example.com"
             onChange={onEmailChange}
-            value={email}
+            value={$email}
           />
           <Typography className="text-red-500" variant={"p"} affects={"muted"}>
-            {errors.errors.email && errors.errors.email}
+            {$errors.email && $errors.email}
           </Typography>
         </div>
         <div className="grid gap-2">
           <Label htmlFor="password">Пароль</Label>
           <Input
-            value={password}
+            value={$password}
             id="password"
             type="password"
             onChange={onPasswordChange}
           />
           <Typography className="text-red-500" variant={"p"} affects={"muted"}>
-            {errors.errors.password && errors.errors.password}
+            {$errors.password && $errors.password}
           </Typography>
         </div>
         <div className="grid gap-2">
           <Label htmlFor="password">Подтверждение пароля</Label>
           <Input
-            value={confirmPassword}
+            value={$confirmPassword}
             id="password"
             type="password"
             onChange={onConfirmPasswordChange}
           />
           <Typography className="text-red-500" variant={"p"} affects={"muted"}>
-            {errors.errors.confirmPassword && errors.errors.confirmPassword}
+            {$errors.confirmPassword && $errors.confirmPassword}
           </Typography>
         </div>
       </CardContent>
       <CardFooter className={"flex flex-col"}>
         <Button
-          disabled={isLoading || formInvalid}
+          disabled={$pending || !$formValid}
           className="w-full"
           onClick={onRegisterClick}
         >
-          {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          {$pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Зарегистрироваться
         </Button>
         <div className={"relative w-full flex justify-center mt-4"}>
