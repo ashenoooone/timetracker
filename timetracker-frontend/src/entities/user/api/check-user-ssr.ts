@@ -6,15 +6,15 @@ import { UserLoginStatus } from "../model/types";
 
 export async function checkUserSsr(
   context: GetServerSidePropsContext,
-  status: UserLoginStatus = "not_authorized"
+  banned_status: UserLoginStatus = "not_authorized"
 ): Promise<GetServerSidePropsResult<{ [key: string]: any }>> {
   const cookies = context.req.cookies;
-  const token = cookies.token;
+  const token = cookies.access_token;
   const scope = fork();
 
   await allSettled(checkUserEv, { scope, params: { token } });
 
-  if (scope.getState($userStatus) === status) {
+  if (scope.getState($userStatus) === banned_status) {
     return {
       redirect: {
         destination: "/login",

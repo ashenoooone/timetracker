@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -15,6 +15,9 @@ import Link from "next/link";
 import { Loader2 } from "lucide-react";
 import { createLoginModel } from "../../model/store";
 import { useUnit } from "effector-react";
+import { toast } from "@/shared/ui/toast";
+import { routerChangedEv } from "@/shared/lib/routerModel";
+import { useRouter } from "next/router";
 
 interface LoginUserProps {
   className?: string;
@@ -22,6 +25,15 @@ interface LoginUserProps {
 
 const model = createLoginModel();
 export const LoginUser = (props: LoginUserProps) => {
+  const [routerChange] = useUnit([routerChangedEv]);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router) {
+      routerChange(router);
+    }
+  }, [router, routerChange]);
+
   const [
     $email,
     emailChangeEv,
@@ -29,6 +41,7 @@ export const LoginUser = (props: LoginUserProps) => {
     $password,
     loginEv,
     $pending,
+    $error,
   ] = useUnit([
     model.$email,
     model.emailChangeEv,
@@ -36,6 +49,7 @@ export const LoginUser = (props: LoginUserProps) => {
     model.$password,
     model.loginEv,
     model.$pending,
+    model.$error,
   ]);
   const { className = "" } = props;
 
@@ -59,6 +73,16 @@ export const LoginUser = (props: LoginUserProps) => {
       password: $password,
     });
   }, [$email, $password, loginEv]);
+
+  useEffect(() => {
+    if ($error) {
+      toast({
+        variant: "destructive",
+        title: "Ошибка при авторизации",
+        description: $error,
+      });
+    }
+  }, [$error]);
 
   return (
     <Card className={className}>

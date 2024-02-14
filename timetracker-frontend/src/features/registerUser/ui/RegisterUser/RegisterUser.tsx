@@ -16,6 +16,8 @@ import { Loader2 } from "lucide-react";
 import { createRegisterModel } from "../../model/store";
 import { useUnit } from "effector-react";
 import { toast } from "@/shared/ui/toast";
+import { routerChangedEv } from "@/shared/lib/routerModel";
+import { useRouter } from "next/router";
 
 const model = createRegisterModel();
 
@@ -25,6 +27,15 @@ interface RegisterUserProps {
 
 export const RegisterUser = (props: RegisterUserProps) => {
   const { className = "" } = props;
+
+  const [routerChange] = useUnit([routerChangedEv]);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router) {
+      routerChange(router);
+    }
+  }, [router, routerChange]);
 
   const [
     $email,
@@ -60,8 +71,11 @@ export const RegisterUser = (props: RegisterUserProps) => {
   );
 
   const onRegisterClick = useCallback(() => {
-    registerUserEv();
-  }, [registerUserEv]);
+    registerUserEv({
+      email: $email,
+      password: $password,
+    });
+  }, [$email, $password, registerUserEv]);
 
   const onPasswordChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {

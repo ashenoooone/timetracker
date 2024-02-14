@@ -3,6 +3,7 @@ import { getObjectEntries } from "@/shared/lib/getObjectEntries";
 import { registerUserMutation } from "../api/register-user-mutation";
 import { apiErrorResponse } from "@/shared/contracts";
 import { $router } from "@/shared/lib/routerModel";
+import { IRegisterData } from "@/features/registerUser/model/types";
 
 export const createRegisterModel = () => {
   // stores
@@ -31,7 +32,7 @@ export const createRegisterModel = () => {
   const changeConfirmPasswordEv = createEvent<string>();
   const validateEmailEv = createEvent<string>();
   const validatePasswordEv = createEvent<string>();
-  const registerUserEv = createEvent();
+  const registerUserEv = createEvent<IRegisterData>();
   const validateConfirmPasswordEv = createEvent<{
     password: string;
     confirmPassword: string;
@@ -127,10 +128,6 @@ export const createRegisterModel = () => {
 
   sample({
     clock: registerUserEv,
-    source: {
-      email: $email,
-      password: $password,
-    },
     target: registerUserMutation.start,
     filter: $formValid,
   });
