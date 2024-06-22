@@ -1,4 +1,4 @@
-import { Page } from "@/shared/ui/Page/Page";
+import { Page } from "@/shared/ui/page/Page";
 import { RegisterUser } from "@/features/registerUser";
 import { Toaster } from "@/shared/ui/toast";
 import React, { memo } from "react";

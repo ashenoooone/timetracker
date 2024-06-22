@@ -3,12 +3,11 @@ import { Header } from "./header";
 import { Footer } from "./footer";
 
 interface LayoutProps {
-  className?: string;
   children?: ReactNode;
 }
 
 export const Layout = (props: LayoutProps) => {
-  const { className = "", children } = props;
+  const { children } = props;
   return (
     <>
       <Header />

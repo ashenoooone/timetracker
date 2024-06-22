@@ -1,3 +1,4 @@
+"use client";
 import React, { ChangeEvent, useCallback, useEffect } from "react";
 import {
   Card,
@@ -17,7 +18,7 @@ import { createRegisterModel } from "../../model/store";
 import { useUnit } from "effector-react";
 import { toast } from "@/shared/ui/toast";
 import { routerChangedEv } from "@/shared/lib/routerModel";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const model = createRegisterModel();
 

@@ -1,3 +1,4 @@
+"use client";
 import React, { useCallback, useEffect } from "react";
 import {
   Card,
@@ -17,7 +18,7 @@ import { createLoginModel } from "../../model/store";
 import { useUnit } from "effector-react";
 import { toast } from "@/shared/ui/toast";
 import { routerChangedEv } from "@/shared/lib/routerModel";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface LoginUserProps {
   className?: string;

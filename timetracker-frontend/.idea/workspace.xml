@@ -4,18 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="feat: регистрация на эффекторе полностью">
-      <change afterPath="$PROJECT_DIR$/src/pages-composite/login/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages-composite/login/ui/LoginPage.tsx" afterDir="false" />
+    <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="feat: разделил приложение на авториз группу и неавториз + сделал навбар слева для авторизоавнных + немного начал делать профиль">
+      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/_src/components/navbar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/analytics/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/profile/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/reports/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/tracker/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main-site)/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main-site)/login/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main-site)/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(main-site)/registration/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/user/ui/profile-header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/user/ui/user.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/consts/paths.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/box/box.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/box/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/logo/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/logo/logo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/page/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../timetracker-backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_src/styles/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/user/api/check-user-ssr.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/api/check-user-ssr.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/loginUser/model/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/loginUser/model/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/model/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/model/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/ui/User/User.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/registerUser/model/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/registerUser/model/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/registerUser/ui/RegisterUser/RegisterUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/registerUser/ui/RegisterUser/RegisterUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages-composite/login/ui/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages-composite/login/ui/LoginPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages-composite/registration/ui/RegistrationPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages-composite/registration/ui/RegistrationPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/registration/index.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/lib/routerModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/routerModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/Page/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/page/Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/Page/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(authorized)/_src/components/navbar-item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/laout/ui/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/laout/ui/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/laout/ui/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/laout/ui/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/laout/ui/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/laout/ui/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,26 +75,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/projects/timetracker/timetracker-frontend/src/shared/lib&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\ashen\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.3058104&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\projects\\timetracker\\timetracker-frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;typescript.add.unambiguous.imports.on.the.fly&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/projects/timetracker/timetracker-frontend/src/shared/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ashen\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "Errors",
+    "settings.editor.splitter.proportion": "0.27522936",
+    "ts.external.directory.path": "C:\\projects\\pets\\timetracker\\timetracker-frontend\\node_modules\\typescript\\lib",
+    "typescript.add.unambiguous.imports.on.the.fly": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -78,11 +111,11 @@
       <recent name="C:\projects\timetracker\timetracker-frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\projects\timetracker\timetracker-frontend\src\widgets\laout" />
-      <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\navigation-menu" />
-      <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\toast" />
-      <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\input" />
-      <recent name="C:\projects\timetracker\timetracker-frontend\src\shared\ui\card" />
+      <recent name="C:\projects\pets\timetracker\timetracker-frontend\src\app\(authorized)\_src\components" />
+      <recent name="C:\projects\pets\timetracker\timetracker-frontend\src\app\(main-site)" />
+      <recent name="C:\projects\pets\timetracker\timetracker-frontend\src\app\(authorized)" />
+      <recent name="C:\projects\pets\timetracker\timetracker-frontend\src\entities\user\ui" />
+      <recent name="C:\projects\pets\timetracker\timetracker-frontend\src\app\_src" />
     </key>
   </component>
   <component name="RunManager">
@@ -134,6 +167,8 @@
       <workItem from="1707313865265" duration="7270000" />
       <workItem from="1707669339221" duration="1333000" />
       <workItem from="1707923968557" duration="5940000" />
+      <workItem from="1718880529998" duration="5847000" />
+      <workItem from="1719059448515" duration="15362000" />
     </task>
     <task id="LOCAL-00001" summary="init frontend">
       <option name="closed" value="true" />
@@ -290,6 +325,7 @@
     <MESSAGE value="feat добавил проверку, чтобы авторизованные пользователи не могли попасть на страницу реги или авторизации" />
     <MESSAGE value="wip: авторизация на 1 токене" />
     <MESSAGE value="feat: регистрация на эффекторе полностью" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: регистрация на эффекторе полностью" />
+    <MESSAGE value="feat: разделил приложение на авториз группу и неавториз + сделал навбар слева для авторизоавнных + немного начал делать профиль" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: разделил приложение на авториз группу и неавториз + сделал навбар слева для авторизоавнных + немного начал делать профиль" />
   </component>
 </project>

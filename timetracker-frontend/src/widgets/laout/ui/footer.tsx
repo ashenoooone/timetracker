@@ -7,5 +7,5 @@ interface FooterProps {
 
 export const Footer = memo((props: FooterProps) => {
   const { className = "" } = props;
-  return <div className={cn("", className)}>{1}</div>;
+  return <div className={cn("", className)}></div>;
 });

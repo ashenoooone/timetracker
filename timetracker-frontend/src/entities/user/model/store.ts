@@ -27,7 +27,7 @@ $userStatus.on(checkUserQuery.$succeeded, () => "authorized");
 $userStatus.on(checkUserQuery.$failed, () => "not_authorized");
 
 // watchers
-debug($userStatus, $user);
+debug($userStatus);
 
 // samples
 sample({
