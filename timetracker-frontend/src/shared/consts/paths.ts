@@ -5,4 +5,5 @@ export const paths = {
   analytics: "/analytics",
   reports: "/reports",
   tracker: "/tracker",
+  projects: "/projects",
 };

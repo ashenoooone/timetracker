@@ -5,50 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="feat: разделил приложение на авториз группу и неавториз + сделал навбар слева для авторизоавнных + немного начал делать профиль">
-      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/_src/components/navbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/analytics/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/profile/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/reports/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/tracker/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(main-site)/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(main-site)/login/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(main-site)/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(main-site)/registration/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/user/ui/profile-header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/user/ui/user.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/consts/paths.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/box/box.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/box/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/logo/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/logo/logo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/page/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../timetracker-backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../timetracker-backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../timetracker-backend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/projects/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_src/styles/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/api/check-user-ssr.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/api/check-user-ssr.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/model/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/model/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/ui/User/User.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/loginUser/ui/LoginUser/LoginUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/registerUser/ui/RegisterUser/RegisterUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/registerUser/ui/RegisterUser/RegisterUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages-composite/login/ui/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages-composite/login/ui/LoginPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages-composite/registration/ui/RegistrationPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages-composite/registration/ui/RegistrationPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/registration/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/lib/routerModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/routerModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/Page/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/page/Page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/Page/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(authorized)/_src/components/navbar-item.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/laout/ui/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/laout/ui/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/laout/ui/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/laout/ui/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/laout/ui/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/laout/ui/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(authorized)/_src/components/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(authorized)/_src/components/navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_document.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/consts/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/consts/paths.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +130,7 @@
       <workItem from="1707669339221" duration="1333000" />
       <workItem from="1707923968557" duration="5940000" />
       <workItem from="1718880529998" duration="5847000" />
-      <workItem from="1719059448515" duration="15362000" />
+      <workItem from="1719059448515" duration="15670000" />
     </task>
     <task id="LOCAL-00001" summary="init frontend">
       <option name="closed" value="true" />
@@ -298,7 +260,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707926469246</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat: разделил приложение на авториз группу и неавториз + сделал навбар слева для авторизоавнных + немного начал делать профиль">
+      <option name="closed" value="true" />
+      <created>1719083477431</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1719083477431</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

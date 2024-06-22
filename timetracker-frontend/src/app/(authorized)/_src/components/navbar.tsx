@@ -1,7 +1,7 @@
 "use client";
 import React, { memo } from "react";
 import { cn } from "@/shared/lib";
-import { MdAccessTimeFilled, MdAvTimer } from "react-icons/md";
+import { MdAccessTimeFilled, MdAvTimer, MdFolder } from "react-icons/md";
 import { Avatar, AvatarFallback } from "@/shared/ui/avatar";
 import { useUnit } from "effector-react";
 import { $user, UserType } from "@/entities/user";
@@ -35,6 +35,48 @@ const LeftPanel = (props: { user?: UserType | null }) => {
   );
 };
 
+const RightPanel = () => {
+  return (
+    <div className={"w-full"}>
+      <div>
+        <Typography variant={"p"} affects={"muted"} className={"p-2 pb-1"}>
+          Профиль
+        </Typography>
+        <NavbarItem href={paths.profile}>
+          <FaUser />
+          Профиль
+        </NavbarItem>
+      </div>
+      <div>
+        <Typography variant={"p"} affects={"muted"} className={"p-2 pb-1"}>
+          Трекер времени
+        </Typography>
+        <NavbarItem href={paths.tracker}>
+          <MdAccessTimeFilled />
+          Трекер
+        </NavbarItem>
+        <NavbarItem href={paths.projects}>
+          <MdFolder />
+          Проекты
+        </NavbarItem>
+      </div>
+      <div>
+        <Typography variant={"p"} affects={"muted"} className={"p-2 pb-1"}>
+          Аналитика
+        </Typography>
+        <NavbarItem href={paths.reports}>
+          <BiSolidReport />
+          Отчеты
+        </NavbarItem>
+        <NavbarItem href={paths.analytics}>
+          <IoMdAnalytics />
+          Аналитика
+        </NavbarItem>
+      </div>
+    </div>
+  );
+};
+
 export const Navbar = memo((props: NavbarProps) => {
   const { className = "" } = props;
   const user = useUnit($user);
@@ -47,39 +89,7 @@ export const Navbar = memo((props: NavbarProps) => {
       )}
     >
       <LeftPanel user={user} />
-      <div className={"w-full"}>
-        <div>
-          <Typography variant={"p"} affects={"muted"} className={"p-2 pb-1"}>
-            Профиль
-          </Typography>
-          <NavbarItem href={paths.profile}>
-            <FaUser />
-            Профиль
-          </NavbarItem>
-        </div>
-        <div>
-          <Typography variant={"p"} affects={"muted"} className={"p-2 pb-1"}>
-            Трекер времени
-          </Typography>
-          <NavbarItem href={paths.tracker}>
-            <MdAccessTimeFilled />
-            Трекер
-          </NavbarItem>
-        </div>
-        <div>
-          <Typography variant={"p"} affects={"muted"} className={"p-2 pb-1"}>
-            Аналитика
-          </Typography>
-          <NavbarItem href={paths.reports}>
-            <BiSolidReport />
-            Отчеты
-          </NavbarItem>
-          <NavbarItem href={paths.analytics}>
-            <IoMdAnalytics />
-            Аналитика
-          </NavbarItem>
-        </div>
-      </div>
+      <RightPanel />
     </div>
   );
 });
