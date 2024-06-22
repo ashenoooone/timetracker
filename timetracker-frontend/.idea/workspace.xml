@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="feat: разделил приложение на авториз группу и неавториз + сделал навбар слева для авторизоавнных + немного начал делать профиль">
-      <change afterPath="$PROJECT_DIR$/src/app/(authorized)/projects/page.tsx" afterDir="false" />
+    <list default="true" id="c09aa2ae-b31b-4cc4-9b78-676e1a032894" name="Changes" comment="feat: добавл страницу в навбар">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(authorized)/_src/components/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(authorized)/_src/components/navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_document.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/consts/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/consts/paths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(authorized)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(authorized)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(authorized)/projects/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(authorized)/projects/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/typography/typography.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/typography/typography.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +128,7 @@
       <workItem from="1707669339221" duration="1333000" />
       <workItem from="1707923968557" duration="5940000" />
       <workItem from="1718880529998" duration="5847000" />
-      <workItem from="1719059448515" duration="15670000" />
+      <workItem from="1719059448515" duration="16309000" />
     </task>
     <task id="LOCAL-00001" summary="init frontend">
       <option name="closed" value="true" />
@@ -268,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719083477431</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat: добавл страницу в навбар">
+      <option name="closed" value="true" />
+      <created>1719083905504</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1719083905504</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,6 +302,7 @@
     <MESSAGE value="wip: авторизация на 1 токене" />
     <MESSAGE value="feat: регистрация на эффекторе полностью" />
     <MESSAGE value="feat: разделил приложение на авториз группу и неавториз + сделал навбар слева для авторизоавнных + немного начал делать профиль" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: разделил приложение на авториз группу и неавториз + сделал навбар слева для авторизоавнных + немного начал делать профиль" />
+    <MESSAGE value="feat: добавл страницу в навбар" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: добавл страницу в навбар" />
   </component>
 </project>
